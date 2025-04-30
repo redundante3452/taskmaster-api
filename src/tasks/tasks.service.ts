@@ -28,15 +28,16 @@ export class TasksService {
 
     }
 
-    async findOne(userId:string, id:string): Promise<TaskDocument>{
-        const task = await this.taskModel.findById({ _id: id, user:userId }).exec()
-        if(!task){
-            throw new NotFoundException('Tarea no encontrada')
+    async findOne(id: string, userId: string): Promise<TaskDocument> {
+        // Buscar una tarea específica que pertenezca al usuario
+        const task = await this.taskModel.findOne({ _id: id, user: userId }).exec();
+        if (!task) {
+          throw new NotFoundException(`Tarea con ID ${id} no encontrada o no tienes permiso para acceder`);
         }
-        return task
-    }
+        return task;
+      }
 
-    async updateTask(id: string, updateTaskDto: UpdateTaskDto, userId: string): Promise<TaskDocument>{
+    async update(id: string, updateTaskDto: UpdateTaskDto, userId: string): Promise<TaskDocument>{
         const updatedTask = await this.taskModel.findOneAndUpdate(
             { _id: id, user: userId },
             updateTaskDto,
