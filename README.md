@@ -12,6 +12,7 @@ TaskMaster API es una aplicación backend desarrollada con [NestJS](https://nest
 
 - **Autenticación de usuarios:** Sistema completo con registro, login y gestión de perfiles
 - **Gestión de tareas:** Crear, leer, actualizar y eliminar tareas
+- **Gestión de etiquetas:** Crear, leer, actualizar y eliminar etiquetas para organizar tareas
 - **Validación de datos:** Implementada con class-validator y class-transformer
 - **Base de datos MongoDB:** Almacenamiento persistente usando Mongoose
 - **Seguridad:** Autenticación con JWT, encriptación de contraseñas con bcrypt
@@ -27,6 +28,9 @@ taskmaster-api/
 │   │   └── strategies/           # Estrategias de autenticación
 │   ├── common/                   # Código compartido
 │   │   └── filters/              # Filtros para manejo de excepciones
+│   ├── tags/                     # Módulo de etiquetas
+│   │   ├── dto/                  # Objetos de transferencia de datos
+│   │   └── schemas/              # Esquemas de Mongoose
 │   ├── tasks/                    # Módulo de tareas
 │   │   ├── dto/                  # Objetos de transferencia de datos
 │   │   └── schemas/              # Esquemas de Mongoose
@@ -110,6 +114,14 @@ npm run test:cov
 - `GET /tasks/:id` - Obtener detalle de una tarea
 - `PUT /tasks/:id` - Actualizar una tarea
 - `DELETE /tasks/:id` - Eliminar una tarea
+
+### Etiquetas
+
+- `GET /tags` - Obtener todas las etiquetas del usuario
+- `POST /tags` - Crear nueva etiqueta
+- `GET /tags/:id` - Obtener detalle de una etiqueta
+- `PUT /tags/:id` - Actualizar una etiqueta
+- `DELETE /tags/:id` - Eliminar una etiqueta
 
 ## Tecnologías Utilizadas
 
