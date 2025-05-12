@@ -18,7 +18,10 @@ export class Task {
     dueDate: Date;
 
     @Prop({ type: MongooseSchema.Types.ObjectId, ref: 'User', required: true })
-    user: MongooseSchema.Types.ObjectId
+    user: MongooseSchema.Types.ObjectId;
+
+    @Prop({ type: [{ type: MongooseSchema.Types.ObjectId, ref: 'Tag' }], default: [] })
+    tags: MongooseSchema.Types.ObjectId[]
 
 }
 
